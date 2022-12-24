@@ -1,0 +1,8 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "An API for resizing and serving images at scale.",
+  "main": "index.js",
+  "author": "Gboluwaga Adeyemi",
+  "license": "MIT"
+}
