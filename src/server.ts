@@ -17,6 +17,7 @@ server.on('error', (err) => {
 
 process.on('uncaughtException', (err) => {
   logger.error(err)
+  logger.info(`Shutting down server gracefully...`)
   process.exit(1)
 })
 
