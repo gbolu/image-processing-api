@@ -12,7 +12,8 @@ loadConfig()
 
 const Environment: Env = {
   Server: {
-    Address: process.env.SERVER_ADDRESS || 3000
+    Address: process.env.SERVER_ADDRESS || 3000,
+    LoggerLevel: process.env.LOGGER_LEVEL || 'error'
   }
 }
 

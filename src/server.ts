@@ -1,27 +1,27 @@
 import http from 'http'
 import app from './app'
 import Environment from './config/env'
+import logger from './util/logger'
 
 const server = http.createServer(app)
 
 server.listen(Environment.Server.Address, () => {
-  console.info(
+  logger.info(
     `Server running at http://localhost:${Environment.Server.Address}`
   )
 })
 
-server.on('error', (e) => {
-  console.info(`Server error: ${e.message}`)
+server.on('error', (err) => {
+  logger.error(`Server error: ${err.message}`)
 })
 
-process.on('uncaughtException', (e) => {
-  console.info(`Uncaught Exception: ${e.message}`)
+process.on('uncaughtException', (err) => {
+  logger.error(err)
+  process.exit(1)
 })
 
 process.on('unhandledRejection', (e) => {
-  console.info(`Unhandled Rejection: ${e}`)
-})
-
-process.on('exit', (code) => {
-  console.info(`Shutting down server in response to exit code: ${code}`)
+  logger.error(`Unhandled Rejection: ${e}`)
+  logger.info(`Shutting down server gracefully...`)
+  process.exit(1)
 })

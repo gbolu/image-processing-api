@@ -6,8 +6,8 @@
   "author": "Gboluwaga Adeyemi",
   "license": "MIT",
   "husky": {
-  "hooks": {
-    "pre-commit": "npm run prettier-format && npm run lint"
+    "hooks": {
+      "pre-commit": "npm run prettier-format && npm run lint"
     }
   },
   "scripts": {
@@ -16,13 +16,14 @@
     "lint": "eslint . --ext .ts",
     "test": "yarn build && jasmine",
     "start": "npm run build && node build/server.js",
-    "dev": "npx nodemon",
+    "dev": "npx nodemon | npx pino-pretty",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
     "@types/express": "^4.17.15",
     "@types/jasmine": "^4.3.1",
+    "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
@@ -35,6 +36,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.2",
     "nodemon": "^2.0.20",
+    "pino-pretty": "^9.1.1",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
@@ -44,6 +46,9 @@
     "dotenv-safe": "^8.2.0",
     "express": "^4.18.2",
     "jasmine": "^4.5.0",
-    "jasmine-spec-reporter": "^7.0.0"
+    "jasmine-spec-reporter": "^7.0.0",
+    "morgan": "^1.10.0",
+    "pino-http": "^8.3.0",
+    "winston": "^3.8.2"
   }
 }
