@@ -1,3 +1,3 @@
 export type ServerConfig = {
-  Address: string|number;
+  Address: string | number
 }

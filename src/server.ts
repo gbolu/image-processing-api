@@ -5,7 +5,9 @@ import Environment from './config/env'
 const server = http.createServer(app)
 
 server.listen(Environment.Server.Address, () => {
-  console.info(`Server running at http://localhost:${Environment.Server.Address}`)
+  console.info(
+    `Server running at http://localhost:${Environment.Server.Address}`
+  )
 })
 
 server.on('error', (e) => {
