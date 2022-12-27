@@ -17,10 +17,13 @@ export default class ImageController extends Controller {
     this.ImageService = new ImageService()
   }
 
-  public processAndFetchImage = async (req: Request, res: Response) => {
+  public processAndFetchImage = async (
+    request: Request,
+    response: Response
+  ) => {
     try {
       const { height, width, fileName, outputFormat } =
-        req.body as unknown as ProcessImageDTO
+        request.body as unknown as ProcessImageDTO
 
       const transformationProps = {
         dimensions: {
@@ -42,16 +45,27 @@ export default class ImageController extends Controller {
             cachedTransformedImagePath
           ),
           200,
-          res
+          response
         )
       }
 
+      // Check if file exists in image store
+      if (!this.ImageService.fileExistsInImageStore(fileName)) {
+        return errorResponse(
+          new AppError(
+            'File does not exist in image store',
+            404,
+            ErrorCodes.INVALID_FILE_NAME
+          ),
+          response
+        )
+      }
       // Perform image transformation
       const { outputLocation } = await this.ImageService.transformImage(
         transformationProps
       )
 
-      return fileDownloadResponse(outputLocation, 200, res)
+      return fileDownloadResponse(outputLocation, 200, response)
     } catch (error) {
       this.classLogger.error(error)
       return errorResponse(
@@ -60,7 +74,7 @@ export default class ImageController extends Controller {
           500,
           ErrorCodes.INTERNAL_SERVER_ERROR
         ),
-        res
+        response
       )
     }
   }
