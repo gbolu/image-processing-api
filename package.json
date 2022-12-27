@@ -12,18 +12,20 @@
   },
   "scripts": {
     "build": "rimraf ./build && npx tsc",
-    "watch": "npx tsc -w",
-    "lint": "eslint . --ext .ts",
-    "test": "yarn build && jasmine",
-    "start": "npm run build && node build/server.js",
+    "copy-assets": "cp -R assets ./build",
     "dev": "npx nodemon | npx pino-pretty",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "lint": "eslint . --ext .ts",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "start": "npm run build && node build/server.js",
+    "test": "yarn build && jasmine",
+    "watch": "rimraf ./build && npx tsc -w"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
     "@types/express": "^4.17.15",
     "@types/jasmine": "^4.3.1",
     "@types/morgan": "^1.9.3",
+    "@types/multer": "^1.4.7",
     "@types/node": "^18.11.17",
     "@types/sharp": "^0.31.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
@@ -48,7 +50,9 @@
     "express": "^4.18.2",
     "jasmine": "^4.5.0",
     "jasmine-spec-reporter": "^7.0.0",
+    "joi": "^17.7.0",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "pino-http": "^8.3.0",
     "sharp": "^0.31.3",
     "winston": "^3.8.2"
