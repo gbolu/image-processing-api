@@ -21,7 +21,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1)
 })
 
-process.on('unhandledRejection', (e) => {
+process.on('unhandledRejection', (e: Error) => {
   logger.error(`Unhandled Rejection: ${e}`)
   logger.info(`Shutting down server gracefully...`)
   process.exit(1)
