@@ -11,7 +11,7 @@ const imageController = new ImageController()
 
 imageRouter.get(
   '/single',
-  validateRequest(ProcessAndFetchImageSchema, VALIDATION_TYPE.BODY),
+  validateRequest(ProcessAndFetchImageSchema, VALIDATION_TYPE.QUERY),
   imageController.processAndFetchImage
 )
 
