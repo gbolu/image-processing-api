@@ -23,7 +23,7 @@ export default class ImageController extends Controller {
   ) => {
     try {
       const { height, width, fileName, outputFormat } =
-        request.body as unknown as ProcessImageDTO
+        request.query as unknown as ProcessImageDTO
 
       const transformationProps = {
         dimensions: {
