@@ -2,6 +2,7 @@ import joi, { ValidationError } from 'joi'
 import { AppError } from '../appError'
 import ErrorCodes from '../errorCodes'
 import { Request, Response, NextFunction } from 'express'
+import errorResponse from '../responseHandlers/errorResponse'
 
 export type ValidationResult = {
   error?: null | AppError
@@ -29,6 +30,9 @@ export const validateRequest =
     } catch (error) {
       const { message } = error as ValidationError
 
-      return next(new AppError(message, 400, ErrorCodes.VALIDATION_ERROR))
+      return errorResponse(
+        new AppError(message, 400, ErrorCodes.VALIDATION_ERROR),
+        res
+      )
     }
   }
