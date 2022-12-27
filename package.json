@@ -11,7 +11,7 @@
     }
   },
   "scripts": {
-    "build": "rimraf ./build && npx tsc",
+    "build": "rimraf ./build && npx tsc && npm run copy-assets",
     "copy-assets": "cp -R assets ./build",
     "dev": "npx nodemon | npx pino-pretty",
     "lint": "eslint . --ext .ts",
