@@ -76,6 +76,10 @@ export default class ImageService {
     return await readdir(ImageService.getImageStorePath())
   }
 
+  public async fetchTransformationCacheList(): Promise<string[]> {
+    return await readdir(ImageService.getTransformationCachePath())
+  }
+
   public async transformImage(
     props: TransformImageProps
   ): Promise<TransformImageResponse> {
@@ -91,7 +95,7 @@ export default class ImageService {
 
       let resizeOperation = sharp(fileLocation).resize(width, height)
 
-      if (!fileName) {
+      if (!fileName || fileName === '') {
         throw new AppError(
           'Please provide filename.',
           400,
@@ -127,11 +131,7 @@ export default class ImageService {
       logger.error(
         `Error occurred while performing image resize operation: ${error}`
       )
-      throw new AppError(
-        ERROR_MESSAGES.IMAGE_PROCESSING_ERROR,
-        500,
-        ErrorCodes.INTERNAL_SERVER_ERROR
-      )
+      throw new Error(ERROR_MESSAGES.IMAGE_PROCESSING_ERROR)
     }
   }
 }
