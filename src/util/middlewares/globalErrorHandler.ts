@@ -10,13 +10,12 @@ export default async function globalErrorHandlerMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const error = err as AppError
-  error.statusCode = err.statusCode || 500
-  error.status = err.status || false
+  err.statusCode = err.statusCode || 500
+  err.status = err.status || false
 
   if (Environment.Server.Environment === 'production') {
-    return sendProductionErrors(error, res)
+    return sendProductionErrors(err, res)
   }
 
-  return debugResponse(error, res)
+  return debugResponse(err, res)
 }
