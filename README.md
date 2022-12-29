@@ -1,4 +1,3 @@
-
 # Image Processing API
 
 An API that can perform basic resizing on images.
@@ -36,3 +35,9 @@ An API that can perform basic resizing on images.
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+=======
+# image-processing-api
+
+### Available endpoints?
+ - Images Fetch `/images/all`
+ - Images Process and Fetch `/images/single`
