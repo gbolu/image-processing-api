@@ -1,5 +1,5 @@
 import { ServerConfig } from './env.types'
-import dotenv from 'dotenv-safe'
+import dotenv from 'dotenv'
 
 type Env = {
   Server: ServerConfig
