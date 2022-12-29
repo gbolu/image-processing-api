@@ -29,13 +29,6 @@ An API that can perform basic resizing on images.
 | `fileName`      | `string` | **Required**. Name of the image to perform the transformation on. Refer to the `Get Images` route to fetch image filenames. |
 | `outputFormat`      | `string` | **Required**. File type to convert the transformed image to. |
 
-
-## Badges
-
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-=======
 # image-processing-api
 
 ### Available endpoints?
